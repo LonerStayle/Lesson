@@ -11,52 +11,37 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
     //생명주기에 따라 onCrete로 시작
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+            super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
+        //버튼 클릭리스너
         button_start.setOnClickListener {
+            //에딧 텍스트의 문자를 변수에 담음
             val nameBox = editText_name.text.toString()
             val mySalary = editText_mySalary.text.toString()
 
+            //이름이 적힌 에딧 텍스트가 비어있다면 이 토스트메세지를 실행
             if (nameBox.isEmpty())
                 Toast.makeText(this, "이름을 적어주세요", Toast.LENGTH_SHORT).show()
+            //월급이 적힌 에딧 텍스트가 비어있다면 이 토스트메세지를 실행
             else if (mySalary.isEmpty())
                 Toast.makeText(this, "한달 월급을 적어주세요", Toast.LENGTH_SHORT).show()
+            //위에 두가지 해당사항이 아니라면 아래 구문 실행
+
             else {
+                // 인텐트에 현재 장소, 이동할 장소를 () 안에 넣음
                 val intent = Intent(this, MoneyControlActivity::class.java)
+
+                // 옮기면서 같이 보낼 값을 담음
                 intent.putExtra("name", nameBox)
                 intent.putExtra("mySalary",mySalary.toInt())
+
+                // 설정한 인텐트를 실행
                 startActivity(intent)
             }
         }
 
-//        Toast.makeText(this,"온 크레이트 상태입니다.",Toast.LENGTH_SHORT).show()
-val setList:Map<Int,Int> = mapOf(1 to 1, 2 to 2 )
     }
 
-    override fun onStart() {
-//        Toast.makeText(this,"온 스타트 상태입니다.",Toast.LENGTH_SHORT).show()
-        super.onStart()
-    }
 
-    override fun onResume() {
-//        Toast.makeText(this,"온 리슘 상태입니다.",Toast.LENGTH_SHORT).show()
-        super.onResume()
-    }
-
-    override fun onPause() {
-//        Toast.makeText(this,"온 퍼즈 상태입니다.",Toast.LENGTH_SHORT).show()
-        super.onPause()
-    }
-
-    override fun onStop() {
-//        Toast.makeText(this,"온 스탑 상태입니다.",Toast.LENGTH_SHORT).show()
-        super.onStop()
-    }
-
-    override fun onDestroy() {
-//        Toast.makeText(this,"온 데스토리 상태입니다.",Toast.LENGTH_SHORT).show()
-        super.onDestroy()
-    }
 }
