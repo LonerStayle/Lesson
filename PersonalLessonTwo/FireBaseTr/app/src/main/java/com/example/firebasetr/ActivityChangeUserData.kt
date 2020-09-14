@@ -27,7 +27,7 @@ class ActivityChangeUserData : AppCompatActivity() {
         setContentView(R.layout.activity_change_userdata)
 
         setButtonPasswordCheck()
-        setButtonEmailChangeClcikListener()
+        setButtonEmailChangeClickListener()
         setButtonLogOutClickListener()
         setButtonPasswordChangeClickListener()
         setButtonUserDataDeleteClickListener()
@@ -57,6 +57,7 @@ class ActivityChangeUserData : AppCompatActivity() {
 
 
     private fun setButtonUserDataDeleteClickListener() {
+
         button_userDataDelete.setOnClickListener {
             dialogReAuth.setContentView(R.layout.dialog_re_auth)
             dialogReAuth.show()
@@ -75,6 +76,7 @@ class ActivityChangeUserData : AppCompatActivity() {
         user?.reauthenticate(credential)
             ?.addOnCompleteListener {
                 if (it.isSuccessful) {
+
                     val dialog = AlertDialog.Builder(this)
                     dialog.setTitle("계정삭제")
                     dialog.setMessage("한번 삭제하면 다시 복구 할 수 없습니다.\n그래도 삭제하시겠습니까?")
@@ -105,9 +107,11 @@ class ActivityChangeUserData : AppCompatActivity() {
 
     private fun setButtonPasswordChangeClickListener() {
         button_passwordChange.setOnClickListener {
+
             dialogChange.setContentView(R.layout.dialog_change)
             dialogChange.show()
             dialogChange.button_changeValue.setOnClickListener {
+
                 val changeValue = dialogChange.editText_changeValue.text.toString()
                 user?.updatePassword(changeValue)
                     ?.addOnCompleteListener {
@@ -123,12 +127,12 @@ class ActivityChangeUserData : AppCompatActivity() {
     }
 
 
-    private fun setButtonEmailChangeClcikListener() {
+    private fun setButtonEmailChangeClickListener() {
         button_emailChange.setOnClickListener {
-
 
             dialogChange.setContentView(R.layout.dialog_change)
             dialogChange.show()
+
             dialogChange.button_changeValue.setOnClickListener {
                 val changeValue = dialogChange.editText_changeValue.text.toString()
                 user?.updateEmail(changeValue)
@@ -143,6 +147,7 @@ class ActivityChangeUserData : AppCompatActivity() {
                         }
                     }
             }
+
         }
 
     }

@@ -1,13 +1,13 @@
 package com.example.firebasetr
 
 
-
 import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.View
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.firebasetr.RequestCode.REQUEST_IMAGE_CODE
 import com.google.firebase.auth.FirebaseAuth
@@ -18,10 +18,6 @@ import kotlinx.android.synthetic.main.activity_register.button_createId
 
 class ActivityRegister : AppCompatActivity() {
 
-
-
-
-
     private var getImage: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,8 +26,6 @@ class ActivityRegister : AppCompatActivity() {
 
         setButtonNewIdCreate()
         setImageProfileClickListener()
-
-
     }
 
     private fun setProgressBar(layoutVisible: Int, progressVisible: Int) {
@@ -40,7 +34,6 @@ class ActivityRegister : AppCompatActivity() {
             progressBar_register.visibility = progressVisible
         }
     }
-
 
 
     private fun setButtonNewIdCreate() {
@@ -73,6 +66,7 @@ class ActivityRegister : AppCompatActivity() {
     private fun createEmailId() {
         button_createId.isEnabled = false
         setProgressBar(View.GONE, View.VISIBLE)
+
         val email = editText_newEmail.text.toString()
         val name = editText_name.text.toString()
         val passWord = editText_newPassWordCheck.text.toString()
@@ -92,7 +86,10 @@ class ActivityRegister : AppCompatActivity() {
                         textView_userEmail.text = email
 
                         getImage = null
-                        startActivity(Intent(this, ActivityNoticeBoard::class.java))
+
+                        val intent = Intent(this, ActivityNoticeBoard::class.java)
+                        intent.putExtra("anonymousCheck", false)
+                        startActivity(intent)
                         finish()
                     }
                 }
@@ -122,14 +119,18 @@ class ActivityRegister : AppCompatActivity() {
     private fun setImageProfileClickListener() {
         imageView_profileImageSelect.setOnClickListener {
 
-            setImagePermission(){
-                startActivityForResult(Intent(Intent.ACTION_PICK,
-                    MediaStore.Images.Media.EXTERNAL_CONTENT_URI),
-                REQUEST_IMAGE_CODE)
+            setImagePermission {
+                startActivityForResult(
+                    Intent(
+                        Intent.ACTION_PICK,
+                        MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+                    ),
+                    REQUEST_IMAGE_CODE
+                )
             }
+
         }
     }
-
 
 
 }

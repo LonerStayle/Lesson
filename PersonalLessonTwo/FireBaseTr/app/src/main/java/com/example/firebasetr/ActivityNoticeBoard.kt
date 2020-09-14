@@ -1,36 +1,47 @@
 package com.example.firebasetr
 
-import android.app.AlertDialog
-import android.app.Dialog
-import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.bumptech.glide.Glide
-import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseAuthException
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_notice_board.*
-import kotlinx.android.synthetic.main.dialog_change.*
-import kotlinx.android.synthetic.main.dialog_re_auth.*
 
 class ActivityNoticeBoard : AppCompatActivity() {
     private val auth by lazy { FirebaseAuth.getInstance() }
-
-
+    private var anonymousCheck: Boolean? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_notice_board)
 
+        setUpData()
         setProfileData()
-
-        button_myDataSetting.setOnClickListener {
-            startActivity(Intent(this,ActivityChangeUserData::class.java))
-        }
+        setButtonMyDataSettingClickListener()
 
     }
 
+    private fun setUpData() {
+        anonymousCheck = intent.getBooleanExtra("anonymousCheck", false)
+        if (anonymousCheck == true){
+            button_myDataSetting.text = "회원가입 하기"
+            button_anonymousToLogin.visibility = View.VISIBLE
+            button_anonymousFaceBookLogin.visibility = View.VISIBLE
+            button_anonymousGoogleLogin.visibility = View.VISIBLE
+        }
+        else
+            return
+    }
+
+    private fun setButtonMyDataSettingClickListener() {
+        button_myDataSetting.setOnClickListener {
+            if (anonymousCheck == true)
+                startActivity(Intent(this, ActivityRegister::class.java))
+            else
+                startActivity(Intent(this, ActivityChangeUserData::class.java))
+        }
+    }
 
 
     private fun setProfileData() {

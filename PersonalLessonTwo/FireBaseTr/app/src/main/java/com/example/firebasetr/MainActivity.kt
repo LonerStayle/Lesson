@@ -19,12 +19,14 @@ class MainActivity : AppCompatActivity() {
 
         setButtonGotoRegister()
         setButtonLoginClickListener()
-
+        setButtonAnonymousClickListener()
     }
+
+
 
     override fun onStart() {
         super.onStart()
-        if(auth.currentUser != null){
+        if (auth.currentUser != null) {
             val intent = Intent(this, ActivityNoticeBoard::class.java)
             startActivity(intent)
             finish()
@@ -65,35 +67,58 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+
     private fun login() {
-        setProgressBar(View.GONE,View.VISIBLE)
+        setProgressBar(View.GONE, View.VISIBLE)
         val email = editText_id.text.toString()
         val passWord = editText_passWord.text.toString()
 
         auth.signInWithEmailAndPassword(email, passWord).addOnCompleteListener {
-            if (it.isSuccessful){
-                setImagePermission(){
-                    val intent = Intent(this,ActivityNoticeBoard::class.java)
+            if (it.isSuccessful) {
+                setImagePermission() {
+                    val intent = Intent(this, ActivityNoticeBoard::class.java)
+
+                    intent.putExtra("anonymousCheck",false)
                     startActivity(intent)
+
                     finish()
-                    setProgressBar(View.VISIBLE,View.GONE)
+                    setProgressBar(View.VISIBLE, View.GONE)
                     button_login.isEnabled = true
                 }
 
-            }else
+            } else
                 baseContext.toast("이메일 혹은 패스워드를 다시 확인해보세요")
-            setProgressBar(View.VISIBLE,View.GONE)
+            setProgressBar(View.VISIBLE, View.GONE)
             button_login.isEnabled = true
 
         }
 
     }
 
-    private fun setProgressBar(viewVisible:Int,progressVisible:Int) {
+    private fun setButtonAnonymousClickListener() {
+        button_anonymousStart.setOnClickListener {
+            auth.signInAnonymously().addOnCompleteListener {
+                if (it.isSuccessful) {
+                    setImagePermission {
+                        val intent = Intent(this, ActivityNoticeBoard::class.java)
+                        intent.putExtra("anonymousCheck",true)
+                        startActivity(intent)
+                        finish()
+                        setProgressBar(View.VISIBLE, View.GONE)
+                        button_login.isEnabled = true
+                    }
+                } else
+                    toast("익명 로그인에 실패했습니다.")
+            }
+        }
+    }
+
+    private fun setProgressBar(viewVisible: Int, progressVisible: Int) {
         editText_id.visibility = viewVisible
         editText_passWord.visibility = viewVisible
         button_login.visibility = viewVisible
         button_goToRegister.visibility = viewVisible
+        button_anonymousStart.visibility = viewVisible
         progressBar_main.visibility = progressVisible
     }
 

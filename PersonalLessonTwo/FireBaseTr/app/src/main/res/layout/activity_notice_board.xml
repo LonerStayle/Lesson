@@ -8,6 +8,7 @@
 
 
 
+
     <TextView
         android:id="@+id/textView_userName"
         android:layout_width="wrap_content"
@@ -15,6 +16,7 @@
         android:layout_marginTop="16dp"
         android:hint="유저가 사용할 이름"
         android:gravity="right"
+        android:text="익명 사용자"
         app:layout_constraintEnd_toEndOf="@+id/imageView_userImage"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,7 +28,7 @@
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_userName"
-        tools:src="@drawable/ic_launcher_background" />
+        android:src="@drawable/ic_baseline_accessibility_new_124" />
 
     <TextView
         android:id="@+id/textView_userEmail"
@@ -47,5 +49,37 @@
         android:text="내 정보 관리"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_userEmail" />
+
+    <Button
+        android:id="@+id/button_anonymousFaceBookLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="12dp"
+        android:text="페이스북 로그인"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_anonymousGoogleLogin" />
+
+    <Button
+        android:id="@+id/button_anonymousGoogleLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:text="구글 로그인"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_anonymousToLogin" />
+
+    <Button
+        android:id="@+id/button_anonymousToLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:text="로그인 하기"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_myDataSetting" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
