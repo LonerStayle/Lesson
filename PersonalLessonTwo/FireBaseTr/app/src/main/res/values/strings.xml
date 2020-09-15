@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">FireBase</string>
-    <string name="facebook_app_id">230526778306772</string>
-    <string name="fb_login_protocol_scheme">fb230526778306772</string>
+    <string name="facebook_app_id">921877188303758</string>
+    <string name="fb_login_protocol_scheme">fb921877188303758</string>
+    <string name="facebook_client_token">c549516474edc76992bf7d966f8ea03e</string>
 </resources>

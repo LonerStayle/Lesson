@@ -16,8 +16,9 @@ import java.security.NoSuchAlgorithmException
 
 
 class SplashActivity : AppCompatActivity() {
-    private val handler = Handler(Looper.myLooper()!!)
-private val TAG = "keyHash"
+
+    private val handler by lazy { Handler(Looper.myLooper()!!) }
+    private val TAG = "keyHash"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.splash_activity)
@@ -25,8 +26,12 @@ private val TAG = "keyHash"
 //        printHashKey(this)
 
         handler.postDelayed({
-            startActivity(Intent(this, MainActivity::class.java))
-            finish()
+            if(!isFinishing) {
+                startActivity(Intent(this, MainActivity::class.java))
+                finish()
+            }else
+                handler.removeCallbacksAndMessages(null)
+
         }, 3000L)
 
 
@@ -50,13 +55,6 @@ private val TAG = "keyHash"
 //            Log.e(TAG, "printHashKey()", e)
 //        }
 //    }
-
-
-    override fun onStop() {
-        super.onStop()
-        handler.removeCallbacksAndMessages(null)
-    }
-
 
 
 }

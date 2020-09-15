@@ -5,6 +5,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.facebook.AccessToken
+import com.facebook.CallbackManager
+import com.facebook.login.LoginManager
+import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -12,7 +16,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
 
     private val auth by lazy { FirebaseAuth.getInstance() }
-
+    private val faceBookCallbackManager = CallbackManager.Factory.create()
+    private val faceBookLoginCallback = FaceBookLoginCallback(this)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -20,7 +25,9 @@ class MainActivity : AppCompatActivity() {
         setButtonGotoRegister()
         setButtonLoginClickListener()
         setButtonAnonymousClickListener()
+        setButtonFaceBookClickListener()
     }
+
 
 
 
@@ -67,7 +74,6 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
     private fun login() {
         setProgressBar(View.GONE, View.VISIBLE)
         val email = editText_id.text.toString()
@@ -78,7 +84,7 @@ class MainActivity : AppCompatActivity() {
                 setImagePermission() {
                     val intent = Intent(this, ActivityNoticeBoard::class.java)
 
-                    intent.putExtra("anonymousCheck",false)
+                    intent.putExtra("anonymousCheck", false)
                     startActivity(intent)
 
                     finish()
@@ -101,7 +107,7 @@ class MainActivity : AppCompatActivity() {
                 if (it.isSuccessful) {
                     setImagePermission {
                         val intent = Intent(this, ActivityNoticeBoard::class.java)
-                        intent.putExtra("anonymousCheck",true)
+                        intent.putExtra("anonymousCheck", true)
                         startActivity(intent)
                         finish()
                         setProgressBar(View.VISIBLE, View.GONE)
@@ -113,6 +119,16 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun setButtonFaceBookClickListener() {
+        button_faceBookLogin.setReadPermissions(arrayListOf("public_profile", "email"))
+        button_faceBookLogin.registerCallback(faceBookCallbackManager, faceBookLoginCallback)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        faceBookCallbackManager.onActivityResult(requestCode, requestCode, data)
+        super.onActivityResult(requestCode, resultCode, data)
+    }
+
     private fun setProgressBar(viewVisible: Int, progressVisible: Int) {
         editText_id.visibility = viewVisible
         editText_passWord.visibility = viewVisible
@@ -121,6 +137,5 @@ class MainActivity : AppCompatActivity() {
         button_anonymousStart.visibility = viewVisible
         progressBar_main.visibility = progressVisible
     }
-
 
 }
