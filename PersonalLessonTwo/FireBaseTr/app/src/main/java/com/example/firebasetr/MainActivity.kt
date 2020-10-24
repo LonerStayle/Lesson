@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
     private val auth by lazy { FirebaseAuth.getInstance() }
     private val faceBookCallbackManager = CallbackManager.Factory.create()
     private val faceBookLoginCallback = FaceBookLoginCallback(this)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -26,6 +27,7 @@ class MainActivity : AppCompatActivity() {
         setButtonLoginClickListener()
         setButtonAnonymousClickListener()
         setButtonFaceBookClickListener()
+
     }
 
 

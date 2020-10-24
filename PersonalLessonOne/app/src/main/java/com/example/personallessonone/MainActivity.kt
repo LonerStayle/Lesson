@@ -15,6 +15,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
+
+
         button_start.setOnClickListener {
 
             val nameBox = editText_name.text.toString()
@@ -30,6 +32,7 @@ class MainActivity : AppCompatActivity() {
                 intent.putExtra("mySalary",mySalary.toInt())
                 startActivity(intent)
             }
+
         }
     }
 }

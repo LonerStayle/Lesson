@@ -82,4 +82,54 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_myDataSetting" />
 
+    <Button
+        android:id="@+id/button_fireStoreDataRandomAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:text="파이어스토어\n 데이터 랜덤이름 생성"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button_fireStoreDataInsert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="파이어스토어\n데이터 추가"
+        app:layout_constraintBottom_toTopOf="@+id/button_fireStoreDataRandomAdd"
+        app:layout_constraintEnd_toEndOf="@+id/button_fireStoreDataRandomAdd"
+        app:layout_constraintStart_toStartOf="@+id/button_fireStoreDataRandomAdd" />
+
+    <Button
+        android:id="@+id/button_firebaseDataReading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="파이어스토어\n데이터 읽기"
+        app:layout_constraintBottom_toTopOf="@+id/button_fireStoreDataInsert"
+        app:layout_constraintEnd_toEndOf="@+id/button_fireStoreDataInsert"
+        app:layout_constraintStart_toStartOf="@+id/button_fireStoreDataInsert" />
+
+    <Button
+        android:id="@+id/button_fireStoreDocumentDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="파이어스토어\n문서삭제"
+        app:layout_constraintBottom_toTopOf="@+id/button_firebaseDataReading"
+        app:layout_constraintEnd_toEndOf="@+id/button_firebaseDataReading"
+        app:layout_constraintStart_toStartOf="@+id/button_firebaseDataReading" />
+
+    <Button
+        android:id="@+id/button_fireStoreFliedDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="파이어스토어\n필드 삭제"
+        app:layout_constraintBottom_toTopOf="@+id/button_fireStoreDocumentDelete"
+        app:layout_constraintEnd_toEndOf="@+id/button_fireStoreDocumentDelete"
+        app:layout_constraintStart_toStartOf="@+id/button_fireStoreDocumentDelete" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
