@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group>
+    <item
+        android:id="@+id/itemPingDaTalk_home"
+        android:title="홈"
+        android:icon="@drawable/ic_outline_home_10">
+    </item>
+    </group>
+
+    <group>
+    <item
+        android:id="@+id/itemPingDaTalk_ranking"
+        android:title="핑다랭킹"
+        android:icon="@drawable/ic_outline_emoji_events_10">
+    </item>
+    </group>
+
+    <group >
+
+        <item
+            android:id="@+id/itemPingDaTalk_magazine"
+            android:title="매거진"
+            android:icon="@drawable/ic_baseline_perm_contact_calendar_10">
+        </item>
+    </group>
+    <item android:title="            피임/생리/성감염질환" />
+    <item android:title="            임산/출산/임산부TV" />
+    <item android:title="            반려동물" />
+    <item android:title="            [NEW]웹툰" />
+
+</menu>

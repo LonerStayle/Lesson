@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "163126765088",
+    "firebase_url": "https://kotlinfirebasetr.firebaseio.com",
+    "project_id": "kotlinfirebasetr",
+    "storage_bucket": "kotlinfirebasetr.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:163126765088:android:eb38eb87061ead124e7e45",
+        "android_client_info": {
+          "package_name": "com.example.firebasetr"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "163126765088-s46v5amnm1c24702189qpuotvdig03uj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzuKzApKfuKIQW2J_W-nsqtz2knTv-2TU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "163126765088-s46v5amnm1c24702189qpuotvdig03uj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:163126765088:android:d1c381303913a39e4e7e45",
+        "android_client_info": {
+          "package_name": "kr.loner.lessonpinkdiary"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "163126765088-s46v5amnm1c24702189qpuotvdig03uj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzuKzApKfuKIQW2J_W-nsqtz2knTv-2TU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "163126765088-s46v5amnm1c24702189qpuotvdig03uj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
