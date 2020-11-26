@@ -10,19 +10,21 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <Button
+            android:id="@+id/btn_deleteData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="서버 값 삭제"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_upload"
+            app:layout_constraintEnd_toStartOf="@+id/btn_upload"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/btn_upload" />
+
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/tb_pingDaTalk"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="핑다톡 화면 입니다."
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -79,6 +81,37 @@
                 android:textSize="8sp" />
 
         </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_getData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="서버 값 불러오기"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_createData"
+            app:layout_constraintEnd_toEndOf="@+id/btn_deleteData"
+            app:layout_constraintStart_toStartOf="@+id/btn_deleteData"
+            app:layout_constraintTop_toTopOf="@+id/btn_createData" />
+
+        <Button
+            android:id="@+id/btn_createData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="서버 값 생성"
+            app:layout_constraintBottom_toTopOf="@+id/btn_upload"
+            app:layout_constraintEnd_toEndOf="@+id/btn_upload"
+            app:layout_constraintStart_toStartOf="@+id/btn_upload"
+            app:layout_constraintTop_toBottomOf="@+id/tb_pingDaTalk" />
+
+        <Button
+            android:id="@+id/btn_upload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="서버 값 수정"
+            app:layout_constraintBottom_toTopOf="@+id/floatingActionButton2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btn_deleteData"
+            app:layout_constraintTop_toBottomOf="@+id/btn_createData" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
